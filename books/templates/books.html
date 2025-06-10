@@ -1,0 +1,22 @@
+{% extends 'master.html' %} {% block content %}
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Books List</h2>
+  <div class="row g-4">
+    {% for book in books_list %}
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title text-primary">
+            <a href="{{book.get_absolute_url}}">{{ book.name }}</a>
+          </h5>
+          <hr />
+          <p class="card-text text-muted">Author: {{ book.author }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{%endblock content%}
