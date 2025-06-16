@@ -22,7 +22,7 @@ class Book(models.Model):
     name = models.CharField(max_length=50)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, null=True, blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
-    review = models.CharField(max_length=500, blank=True, null=True)
+    review = models.TextField(max_length=1500, blank=True, null=True)
 
 
     def __str__(self):
