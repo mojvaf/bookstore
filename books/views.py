@@ -21,14 +21,11 @@ def create_book_form_view(request):
      if request.method == 'POST':
         form = CreateBookForm(request.POST)
         if form.is_valid():
-            
-            author = form.cleaned_data['author']
-            publisher = form.cleaned_data['publisher']
             model = Book(
-                name=form.cleaned_data['name'],
-                author=author,           
-                publisher=publisher,     
-                review=form.cleaned_data['review']
+                name = form.cleaned_data['name'],
+                author = form.cleaned_data['author'],     
+                publisher = form.cleaned_data['publisher'],
+                review = form.cleaned_data['review']
             )
             model.save()
             return render(request, 'form_success.html', {'name': model.name})
