@@ -4,18 +4,18 @@ from ..models.book import Author
 from ..models.book import Publisher
 
 class CreateBookForm(forms.Form):
-   class Meta:
-      model = Book
-      fields = ['name','publisher','author','review']
+      name = forms.CharField(max_length=255)
 
-      Publisher = forms.ModelChoiceField(
+      publisher = forms.ModelChoiceField(
          queryset= Publisher.objects.all(),
          label='Publisher',
          required=False
       )
 
-      Author = forms.ModelChoiceField(
+      author = forms.ModelChoiceField(
          queryset= Author.objects.all(),
          label= 'Author',
          required=False
       )
+
+      review = forms.CharField(widget=forms.Textarea, required=False) 

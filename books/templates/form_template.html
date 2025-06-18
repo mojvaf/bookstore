@@ -1,6 +1,6 @@
 {% extends 'master.html' %} {% block content %}
 <h1>Fill out the form</h1>
-<form method="post">
+<form method="post" action="{% url 'create_book_form_view' %}">
   {% csrf_token %} {{ form.as_p }}
   <button type="submit">Submit</button>
 </form>
