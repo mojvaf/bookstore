@@ -1,7 +1,28 @@
 {% extends 'master.html' %} {% block content %}
-<h1>Fill out the form</h1>
-<form method="post" action="{% url 'create_book_form_view' %}">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Submit</button>
-</form>
+<div class="contact-form">
+  <h1 class="form-title">Form</h1>
+
+  <form method="post" action="{% url 'create_book_form_view' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Name</label>
+      <div class="row">
+        <div class="col-md-6">{{ form.name }}</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Publisher</label>
+      {{ form.publisher }}
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Author</label>
+      {{ form.author }}
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Review</label>
+      {{ form.review }}
+    </div>
+    <button type="submit" class="btn btn-submit">Submit</button>
+  </form>
+</div>
 {%endblock content%}
