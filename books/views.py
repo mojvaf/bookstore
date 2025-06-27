@@ -33,3 +33,5 @@ def create_book_form_view(request):
         form = CreateBookForm()
 
      return render(request, 'form_template.html', {'form':form})        
+
+

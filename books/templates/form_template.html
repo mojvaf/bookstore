@@ -1,28 +1,37 @@
 {% extends 'master.html' %} {% block content %}
-<div class="contact-form">
-  <h1 class="form-title">Form</h1>
-
-  <form method="post" action="{% url 'create_book_form_view' %}">
-    {% csrf_token %}
-    <div class="mb-3">
-      <label for="firstName" class="form-label">Name</label>
-      <div class="row">
-        <div class="col-md-6">{{ form.name }}</div>
-      </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 bg-light-blue p-5 rounded">
+      <h1 class="text-center">Form</h1>
+      <form method="post" action="{% url 'create_book_form_view' %}">
+        {% csrf_token %}
+        <div class="row mb-3">
+          <label for="firstName" class="col-sm-2 col-form-label">Name</label>
+          <div class="col">{{ form.name }}</div>
+        </div>
+        <div class="row mb-3">
+          <label for="Publisher" class="col-sm-2 col-form-label"
+            >Publisher</label
+          >
+          <div class="col-sm-10">
+            <div>{{ form.publisher }}</div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="Author" class="col-sm-2 col-form-label">Author</label>
+          <div class="col-sm-10">
+            <div>{{ form.author }}</div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="review" class="col-sm-2 col-form-label">Review</label>
+          <div class="col-sm-10">
+            <div>{{ form.review }}</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Publisher</label>
-      {{ form.publisher }}
-    </div>
-    <div class="mb-3">
-      <label for="message" class="form-label">Author</label>
-      {{ form.author }}
-    </div>
-    <div class="mb-3">
-      <label for="message" class="form-label">Review</label>
-      {{ form.review }}
-    </div>
-    <button type="submit" class="btn btn-submit">Submit</button>
-  </form>
+  </div>
 </div>
 {%endblock content%}
