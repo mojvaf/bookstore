@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic import ListView,  DetailView
 from .models.book import Book
-from .forms.form import CreateBookForm
+from .forms.form import CreateBookForm ,  BookForm,  ContactForm
 
 
 class BooksPage(ListView):
@@ -35,3 +35,25 @@ def create_book_form_view(request):
      return render(request, 'form_template.html', {'form':form})        
 
 
+
+def book_form_view(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = BookForm()  
+    return render(request, 'book_form.html', {'form': form})
+
+def contact_form_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+        else:
+            form = ContactForm()
+        return render(request, 'contact_form.html', {'form': form})    
+
+        
