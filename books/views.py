@@ -52,8 +52,13 @@ def contact_form_view(request):
         if form.is_valid():
             form.save()
             return redirect('success')
-        else:
-            form = ContactForm()
-        return render(request, 'contact_form.html', {'form': form})    
+    else:
+         form = ContactForm()
+
+    users = {'name':'moj',
+             'lastName' : 'hhh',
+             'age': 20
+             }     
+    return render(request, 'contact_form.html', {'myForm': form, 'user' : users})    
 
         

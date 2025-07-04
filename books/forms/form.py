@@ -2,6 +2,7 @@ from django import forms
 from ..models.book import Author
 from ..models.book import Publisher
 from ..models.book import Book
+from ..models.contact import Contact
 
 class CreateBookForm(forms.Form):
       name = forms.CharField(max_length=20)
@@ -24,12 +25,13 @@ class CreateBookForm(forms.Form):
 class BookForm(forms.ModelForm):
       class Meta:
             model = Book
-            fields = ['title', 'publication_date', 'author', 'publisher']
+            fields = ['name','author', 'publisher', 'review']
 
             
 
-class ContactForm(forms.Form):
-      name = forms.CharField(max_length=100)
-      email = forms.EmailField()
-      message = forms.CharField(widget=forms.Textarea)
+class ContactForm(forms.ModelForm):
+     class Meta:
+           model = Contact
+           fields = ['name', 'content']
+           widgets = {'name': forms.TextInput(attrs = {'class': 'form-control'})}
       
